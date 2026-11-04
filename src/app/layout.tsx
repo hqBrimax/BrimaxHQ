@@ -35,6 +35,9 @@ export const metadata: Metadata = {
     title: "Brimax — Security-first builder",
     description: "On-chain policy vaults, AI payment security, and Solana vulnerability research.",
   },
+  icons: {
+    icon: "/favicon.svg",
+  },
   robots: {
     index: true,
     follow: true,

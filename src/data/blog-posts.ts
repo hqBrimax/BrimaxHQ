@@ -1,131 +1,106 @@
-import { BlogPost } from "@/types/blog"
+import { BlogPost } from "@/types/blog";
 
 export const blogPosts: BlogPost[] = [
   {
     id: "1",
-    title: "The Future of SaaS Development in 2024",
-    slug: "future-of-saas-development-2024",
-    excerpt: "Exploring the latest trends and technologies shaping the future of SaaS development, from AI integration to serverless architectures.",
+    title: "Why On-Chain Policy Vaults Need Immutable Binaries",
+    slug: "immutable-binaries-policy-vaults",
+    excerpt: "A policy vault that can be upgraded is not a policy vault. It is a promise. Here is why Brimax renounces upgrade authority on every contract.",
     content: `
-      The software-as-a-service (SaaS) industry continues to evolve at a rapid pace, with 2024 bringing new challenges and opportunities. 
-      This article explores the key trends that are shaping the future of SaaS development, including:
+      <p>Most on-chain systems have an upgrade authority. Someone holds the keys to change the code. That is convenient for developers and catastrophic for users.</p>
 
-      - AI and Machine Learning Integration
-      - Serverless Architecture Adoption
-      - Enhanced Security Measures
-      - Microservices Architecture
-      - Real-time Collaboration Features
+      <p>If an attacker compromises the upgrade authority, every policy, every limit, every access control becomes meaningless. The attacker does not need to break the code. They just replace it.</p>
 
-      As we move forward, developers need to stay ahead of these trends to create more efficient and scalable applications.
+      <h2>The Brimax approach</h2>
+      <p>Every Brimax contract is deployed as an immutable binary. Upgrade authority is renounced at deployment. No one can change the code. Not the developer. Not an attacker. Not a compromised key.</p>
+
+      <p>This means:</p>
+      <ul>
+        <li>Policies cannot be silently weakened</li>
+        <li>Spending limits cannot be raised by anyone</li>
+        <li>Access controls cannot be bypassed through an upgrade</li>
+      </ul>
+
+      <h2>The tradeoff</h2>
+      <p>Immutability means bugs cannot be patched. If there is a vulnerability, the only fix is a new deployment and migration. This is a real cost. But the alternative — a system that can be changed by anyone with the right keys — is not a security system. It is a suggestion.</p>
+
+      <p>Brimax chooses the cost of immutability over the illusion of flexibility.</p>
     `,
-    author: "John Doe",
-    date: "2024-03-15",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
-    tags: ["SaaS", "Development", "Technology", "AI"],
+    author: "Nathan Oyewole",
+    date: "2026-11-01",
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&auto=format&fit=crop",
+    tags: ["Security", "On-Chain", "Rust"],
   },
   {
     id: "2",
-    title: "Building Scalable Applications with Next.js",
-    slug: "building-scalable-applications-nextjs",
-    excerpt: "Learn how to leverage Next.js features to build highly scalable and performant web applications.",
+    title: "TEE Attestation: Why Caps Must Be Real, Not Promises",
+    slug: "tee-attestation-real-caps",
+    excerpt: "A spending cap that lives in process memory is a suggestion. An attacker with process access can change it. Here is how TEE attestation makes caps verifiable.",
     content: `
-      Next.js has become a go-to framework for building modern web applications. This article covers:
+      <p>Every AI payment security system claims to have spending caps. Max per transaction. Daily limits. Allowlists. But most of these caps are enforced by code running in the same process as the agent.</p>
 
-      - Server-side Rendering Benefits
-      - Static Site Generation
-      - API Routes
-      - Image Optimization
-      - Performance Best Practices
+      <p>If the agent is compromised, the attacker can simply modify the cap. Raise it to infinity. Clear the allowlist. The audit trail will show everything was "approved" — because the policy engine itself was tampered with.</p>
 
-      Discover how to make the most of Next.js features to create fast and scalable applications.
+      <h2>The problem with HMAC</h2>
+      <p>HMAC-based attestation proves the code has not changed since startup. But the key lives in process memory. Anyone with process access can regenerate the proof. The attestation proves nothing to an outsider.</p>
+
+      <h2>The Brimax approach</h2>
+      <p>Brimax uses Ed25519 asymmetric signing. The private key is held by a separate signing service (HashiCorp Vault in production). The policy engine sends the measurement and timestamp to Vault, which returns a signature. The private key never enters the policy engine process.</p>
+
+      <p>Anyone can verify the signature with the published public key. No shared secret required. No trust in the process required.</p>
+
+      <h2>The remaining gap</h2>
+      <p>Without actual TEE hardware (Nitro, SGX, SEV), the measurement itself is self-reported. The code hash is computed by the same process it describes. This is documented honestly in the TEE Attestation Spec. The spec does not pretend to solve a problem it cannot solve.</p>
     `,
-    author: "Jane Smith",
-    date: "2024-03-10",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&auto=format&fit=crop",
-    tags: ["Next.js", "Web Development", "Performance"],
+    author: "Nathan Oyewole",
+    date: "2026-10-28",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop",
+    tags: ["Security", "TEE", "AI Agents"],
   },
   {
     id: "3",
-    title: "The Rise of AI in Software Development",
-    slug: "rise-of-ai-software-development",
-    excerpt: "How artificial intelligence is transforming the software development landscape and what it means for developers.",
+    title: "Can Frontier AI Models Find Real Solana Vulnerabilities?",
+    slug: "ai-models-solana-vulnerabilities",
+    excerpt: "SolAudit tests whether frontier models can find real vulnerabilities in Solana programs. The results are not what you would expect.",
     content: `
-      Artificial Intelligence is revolutionizing software development in numerous ways:
+      <p>AI models are increasingly used for security auditing. But can they actually find the vulnerabilities that matter in Solana programs?</p>
 
-      - Automated Code Generation
-      - Bug Detection and Prevention
-      - Code Review Automation
-      - Performance Optimization
-      - Development Workflow Enhancement
+      <p>SolAudit is a 10-task evaluation suite covering the most common Solana vulnerability classes: missing signer checks, PDA collision, unchecked ownership, reentrancy, missing has_one constraints, mint mismatch, rent exemption issues, unsafe deserialization, signer escalation, and account confusion.</p>
 
-      Learn how AI tools are changing the way we write and maintain code.
+      <h2>What the eval tests</h2>
+      <p>Each task presents a vulnerable Solana program and asks the model to identify the vulnerability. The grader checks for correct identification across four categories: vulnerability type, root cause, impact, and fix.</p>
+
+      <h2>Why this matters</h2>
+      <p>If AI models can reliably find these vulnerabilities, they become a force multiplier for auditors. If they cannot, relying on them creates a false sense of security. Either way, the answer matters.</p>
+
+      <p>SolAudit is open source. Run it against any model. Compare results. Draw your own conclusions.</p>
     `,
-    author: "Mike Johnson",
-    date: "2024-03-05",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop",
-    tags: ["AI", "Development", "Technology"],
+    author: "Nathan Oyewole",
+    date: "2026-10-20",
+    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop",
+    tags: ["Solana", "Security", "AI", "Research"],
   },
   {
     id: "4",
-    title: "Best Practices for Mobile App Development",
-    slug: "mobile-app-development-best-practices",
-    excerpt: "Essential guidelines and best practices for creating successful mobile applications in 2024.",
+    title: "Default Deny: Why Empty Allowlists Should Mean Nobody",
+    slug: "default-deny-empty-allowlists",
+    excerpt: "Rampart treats an empty allowlist as deny-all. Sentinel used to treat it as allow-all. Here is why that difference matters and how it was fixed.",
     content: `
-      Mobile app development requires careful consideration of various factors:
+      <p>Two products in the same line. Opposite defaults. One treats an empty allowlist as "allow everyone." The other treats it as "allow nobody."</p>
 
-      - User Experience Design
-      - Performance Optimization
-      - Security Implementation
-      - Cross-platform Development
-      - App Store Optimization
+      <p>This is not a minor inconsistency. It is a security bug. If a developer configures an allowlist but forgets to populate it, the system either blocks everything (safe) or allows everything (dangerous).</p>
 
-      Discover the key practices that can make your mobile app stand out in the market.
+      <h2>The fix</h2>
+      <p>Sentinel was updated to match Rampart: empty allowlist means deny all. No exceptions. No fallback. If you want to allow someone, you must explicitly add them.</p>
+
+      <h2>The broader principle</h2>
+      <p>Default deny is not just a configuration choice. It is an architectural stance. Every system should start from the position that nothing is allowed, and permissions must be explicitly granted.</p>
+
+      <p>This applies to allowlists, spending caps, recipient lists, and every other access control. The burden of proof should be on allowing, not on blocking.</p>
     `,
-    author: "Sarah Wilson",
-    date: "2024-02-28",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop",
-    tags: ["Mobile", "Development", "Best Practices"],
+    author: "Nathan Oyewole",
+    date: "2026-10-15",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&auto=format&fit=crop",
+    tags: ["Security", "Architecture", "Policy"],
   },
-  {
-    id: "5",
-    title: "Cloud Computing Trends for 2024",
-    slug: "cloud-computing-trends-2024",
-    excerpt: "An overview of the latest trends and innovations in cloud computing that are shaping the industry.",
-    content: `
-      Cloud computing continues to evolve with new trends emerging:
-
-      - Edge Computing
-      - Serverless Architecture
-      - Multi-cloud Strategies
-      - Cloud Security
-      - Green Cloud Computing
-
-      Stay informed about the latest developments in cloud technology.
-    `,
-    author: "David Brown",
-    date: "2024-02-20",
-    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&auto=format&fit=crop",
-    tags: ["Cloud", "Technology", "Infrastructure"],
-  },
-  {
-    id: "6",
-    title: "The Impact of Web3 on Software Development",
-    slug: "web3-impact-software-development",
-    excerpt: "How Web3 technologies are changing the landscape of software development and what developers need to know.",
-    content: `
-      Web3 is bringing significant changes to software development:
-
-      - Blockchain Integration
-      - Decentralized Applications
-      - Smart Contracts
-      - Token Economics
-      - Web3 Security
-
-      Explore how Web3 is transforming the way we build and deploy applications.
-    `,
-    author: "Emily Chen",
-    date: "2024-02-15",
-    image: "https://images.unsplash.com/photo-1639762681057-408e52192e55?w=800&auto=format&fit=crop",
-    tags: ["Web3", "Blockchain", "Development"],
-  },
-] 
+];
