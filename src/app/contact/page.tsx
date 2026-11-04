@@ -23,7 +23,12 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           <div>
-            <form className="space-y-6" action="/api/contact" method="POST">
+            <form
+              className="space-y-6"
+              action="mailto:brimaxhq@gmail.com"
+              method="POST"
+              encType="text/plain"
+            >
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
                   Name
