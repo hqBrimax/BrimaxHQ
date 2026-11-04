@@ -14,7 +14,7 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
           >
-            Modern Tech Solutions for Your Business
+            Modern Security Infrastructure for AI Agents
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -22,7 +22,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
           >
-            We specialize in SaaS Development, Freelancing, and Software Solutions to help your business thrive in the digital age.
+            Building on-chain policy vaults, AI payment security layers, and Solana vulnerability research. Security-first, not security-last.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
