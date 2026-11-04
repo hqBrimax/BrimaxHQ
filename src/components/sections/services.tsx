@@ -1,27 +1,19 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { 
-  CodeBracketIcon, 
-  UserGroupIcon, 
-  WrenchScrewdriverIcon 
-} from "@heroicons/react/24/outline"
 
 const services = [
   {
-    title: "SaaS Development",
-    description: "Custom software solutions designed to scale with your business needs.",
-    icon: CodeBracketIcon,
+    title: "On-Chain Security",
+    description: "Policy vaults, immutable binaries, PDA-based fund management. Built with the assumption that someone will try to break it.",
   },
   {
-    title: "Freelancing",
-    description: "Expert freelance services for your technical and creative needs.",
-    icon: UserGroupIcon,
+    title: "AI Payment Security",
+    description: "Security middleware for AI agents. Policy engines, counterparty scoring, TEE attestation, audit trails. Caps that are real, not promises.",
   },
   {
-    title: "Software Solutions",
-    description: "End-to-end software development and consulting services.",
-    icon: WrenchScrewdriverIcon,
+    title: "Vulnerability Research",
+    description: "Solana security evals, vulnerability detection, and audit-grade code analysis. Finding the bugs that frontier models miss.",
   },
 ]
 
@@ -30,22 +22,22 @@ export function Services() {
     <section className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white"
           >
-            Our Services
+            What I Build
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="mt-4 text-xl text-gray-600 dark:text-gray-300"
           >
-            Comprehensive tech solutions for your business
+            Security infrastructure for the AI agent economy
           </motion.p>
         </div>
 
@@ -57,9 +49,8 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg"
+              className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700"
             >
-              <service.icon className="h-12 w-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                 {service.title}
               </h3>
@@ -72,4 +63,4 @@ export function Services() {
       </div>
     </section>
   )
-} 
+}
