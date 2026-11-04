@@ -6,9 +6,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
-            <Link href="/" className="text-lg font-semibold text-text-primary tracking-tight">
-              Brimax
-            </Link>
+            <img src="/logo.svg" alt="Brimax" width="120" height="24" className="h-6 w-auto mb-4" />
             <p className="mt-4 text-sm text-text-secondary leading-relaxed">
               Security-first builder. On-chain policy vaults, AI payment security, and Solana vulnerability research.
             </p>

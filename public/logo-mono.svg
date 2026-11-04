@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 32" width="160" height="32">
+  <g>
+    <rect x="1" y="1" width="30" height="30" rx="6" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+    <line x1="9" y1="8" x2="9" y2="24" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="9" y1="16" x2="22" y2="8" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="9" y1="16" x2="22" y2="24" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <text x="40" y="23" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="-0.04em">BRIMAX</text>
+</svg>
