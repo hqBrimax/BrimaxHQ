@@ -1,11 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useTheme } from "next-themes";
+import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Logo } from "@/components/common/logo";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const navigation = [
     { name: "Projects", href: "/portfolio" },
@@ -19,8 +27,8 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2">
-            <img src="/logo.svg" alt="Brimax" width="120" height="24" className="h-6 w-auto" />
+          <Link href="/" className="flex items-center gap-2 text-text-primary">
+            <Logo className="h-6 w-auto" />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
@@ -33,6 +41,17 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-lg text-text-secondary hover:text-text-primary transition-colors"
+              aria-label="Toggle theme"
+            >
+              {mounted && theme === "dark" ? (
+                <SunIcon className="h-5 w-5" />
+              ) : (
+                <MoonIcon className="h-5 w-5" />
+              )}
+            </button>
             <Link
               href="/contact"
               className="px-4 py-2 bg-accent text-white text-sm font-medium rounded-lg hover:bg-accent-hover transition-colors"
@@ -42,6 +61,17 @@ export function Navbar() {
           </div>
 
           <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-lg text-text-secondary"
+              aria-label="Toggle theme"
+            >
+              {mounted && theme === "dark" ? (
+                <SunIcon className="h-5 w-5" />
+              ) : (
+                <MoonIcon className="h-5 w-5" />
+              )}
+            </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-lg text-text-secondary"
