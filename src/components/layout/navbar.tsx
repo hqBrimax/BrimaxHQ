@@ -1,87 +1,109 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { useTheme } from "next-themes"
-import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
+import { useState } from "react";
+import Link from "next/link";
+import { useTheme } from "next-themes";
+import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   const navigation = [
-    { name: "Home", href: "/" },
     { name: "Projects", href: "/portfolio" },
+    { name: "Services", href: "/services" },
     { name: "About", href: "/about" },
+    { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
-  ]
+  ];
 
   return (
-    <nav className="bg-white dark:bg-gray-900 fixed w-full z-50 border-b border-gray-200 dark:border-gray-700">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex">
-            <Link href="/" className="flex items-center">
-              <span className="text-xl font-bold text-gray-900 dark:text-white">Brimax</span>
-            </Link>
-          </div>
+        <div className="flex items-center justify-between h-16">
+          <Link href="/" className="text-lg font-semibold text-text-primary tracking-tight">
+            Brimax
+          </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                className="text-sm text-text-secondary hover:text-text-primary transition-colors duration-200"
               >
                 {item.name}
               </Link>
             ))}
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800"
+              className="p-2 rounded-lg text-text-secondary hover:text-text-primary transition-colors"
+              aria-label="Toggle theme"
             >
               {theme === "dark" ? (
-                <SunIcon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                <SunIcon className="h-5 w-5" />
               ) : (
-                <MoonIcon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                <MoonIcon className="h-5 w-5" />
               )}
             </button>
+            <Link
+              href="/contact"
+              className="px-4 py-2 bg-accent text-white text-sm font-medium rounded-lg hover:bg-accent-hover transition-colors"
+            >
+              Start a Project
+            </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-lg text-text-secondary"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? (
+                <SunIcon className="h-5 w-5" />
+              ) : (
+                <MoonIcon className="h-5 w-5" />
+              )}
+            </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800"
+              className="p-2 rounded-lg text-text-secondary"
+              aria-label="Toggle menu"
             >
               {isMenuOpen ? (
-                <XMarkIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+                <XMarkIcon className="h-6 w-6" />
               ) : (
-                <Bars3Icon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+                <Bars3Icon className="h-6 w-6" />
               )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="md:hidden border-t border-border bg-bg">
+          <div className="px-4 py-4 space-y-1">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                className="block px-3 py-2 text-text-secondary hover:text-text-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
+            <Link
+              href="/contact"
+              className="block px-3 py-2 text-accent font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Start a Project
+            </Link>
           </div>
         </div>
       )}
     </nav>
-  )
-} 
+  );
+}

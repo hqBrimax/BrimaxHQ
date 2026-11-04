@@ -40,20 +40,19 @@ export default function TermsPage() {
       
       <div data-custom-class="body_text" style="line-height: 1.5;">
         <p>
-          We are <strong>Nathan Oyewole</strong>, doing business as <strong>brimaxHQ</strong>, 
-          a company registered in <strong>Nigeria</strong> at <strong>Nitel Street, Ikere Ekiti, Ekiti 11232</strong>.
+          We are <strong>Nathan Oyewole</strong>, doing business as <strong>Brimax</strong>, 
+                    a company registered in <strong>Nigeria</strong> at <strong>Nitel Street, Ikere Ekiti, Ekiti 11232</strong>.
         </p>
         <p>
-          We operate the website <a href="https://brimax-hq.vercel.app" data-custom-class="link">https://brimax-hq.vercel.app</a> (the "Site"), 
+          We operate the website <a href="https://visitbrimax.vercel.app" data-custom-class="link">https://visitbrimax.vercel.app</a> (the "Site"), 
           as well as any other related products and services that refer or link to these legal terms (the "Legal Terms").
         </p>
         <p>
-          <strong>Modern Tech Solutions for Your Business:</strong> We specialize in SaaS Development, Freelancing, 
-          and Software Solutions to help your business thrive in the digital age.
+          <strong>Security-first builder:</strong> We specialize in on-chain security, AI payment security, and vulnerability research.
         </p>
         <p>
           You can contact us by phone at <strong>+2347089749447</strong>, email at 
-          <a href="mailto:nathanemmanueloreofe@outlook.com" data-custom-class="link">nathanemmanueloreofe@outlook.com</a>, 
+          <a href="mailto:brimaxhq@gmail.com" data-custom-class="link">brimaxhq@gmail.com</a>, 
           or by mail to Nitel Street, Ikere Ekiti, Ekiti 11232, Nigeria.
         </p>
         <p>
@@ -115,18 +114,14 @@ export default function TermsPage() {
   `;
 
   return (
-    <main className="min-h-screen pt-24 pb-20 px-6 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+    <main className="min-h-screen pt-24 pb-20 px-6 bg-bg text-text-primary">
       <div className="max-w-4xl mx-auto">
-        <Link href="/" className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-8 inline-block hover:underline transition-all">
-          ← Back to BrimaxHQ
+        <Link href="/" className="text-sm font-medium text-accent mb-8 inline-block hover:underline transition-all">
+          &larr; Back to Brimax
         </Link>
 
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 md:p-12 rounded-2xl shadow-xl">
-          <article 
-            className="prose prose-slate dark:prose-invert max-w-none 
-            prose-headings:font-bold prose-h1:text-4xl prose-h2:text-2xl 
-            prose-p:leading-relaxed prose-li:my-1"
-          >
+        <div className="bg-surface border border-border p-8 md:p-12 rounded-xl">
+          <article className="prose prose-invert max-w-none">
             <div dangerouslySetInnerHTML={{ __html: termsHtml }} />
           </article>
         </div>

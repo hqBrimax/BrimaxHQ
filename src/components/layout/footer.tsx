@@ -1,76 +1,115 @@
+import Link from "next/link";
+
 export function Footer() {
   return (
-    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="border-t border-border mt-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Brimax</h3>
-            <p className="mt-4 text-gray-600 dark:text-gray-300">
+            <Link href="/" className="text-lg font-semibold text-text-primary tracking-tight">
+              Brimax
+            </Link>
+            <p className="mt-4 text-sm text-text-secondary leading-relaxed">
               Security-first builder. On-chain policy vaults, AI payment security, and Solana vulnerability research.
             </p>
+            <div className="mt-6 flex gap-4">
+              <a
+                href="https://x.com/NathanOyewole"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-text-muted hover:text-text-primary transition-colors text-sm"
+              >
+                X / Twitter
+              </a>
+              <a
+                href="https://github.com/hqBrimax"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-text-muted hover:text-text-primary transition-colors text-sm"
+              >
+                GitHub
+              </a>
+            </div>
           </div>
+
           <div>
-            <h4 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">Services</h4>
-            <ul className="mt-4 space-y-4">
+            <h4 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-4">Services</h4>
+            <ul className="space-y-3">
               <li>
-                <a href="/services" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
-                  SaaS Development
-                </a>
+                <Link href="/services" className="text-sm text-text-secondary hover:text-text-primary transition-colors">
+                  On-Chain Security
+                </Link>
               </li>
               <li>
-                <a href="/services" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
-                  Freelancing
-                </a>
+                <Link href="/services" className="text-sm text-text-secondary hover:text-text-primary transition-colors">
+                  AI Payment Security
+                </Link>
               </li>
               <li>
-                <a href="/services" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
-                  Software Solutions
-                </a>
+                <Link href="/services" className="text-sm text-text-secondary hover:text-text-primary transition-colors">
+                  Vulnerability Research
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-sm text-text-secondary hover:text-text-primary transition-colors">
+                  Security-First Development
+                </Link>
               </li>
             </ul>
           </div>
+
           <div>
-            <h4 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">Company</h4>
-            <ul className="mt-4 space-y-4">
+            <h4 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-4">Company</h4>
+            <ul className="space-y-3">
               <li>
-                <a href="/about" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                <Link href="/portfolio" className="text-sm text-text-secondary hover:text-text-primary transition-colors">
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-sm text-text-secondary hover:text-text-primary transition-colors">
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/blog" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                <Link href="/blog" className="text-sm text-text-secondary hover:text-text-primary transition-colors">
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/contact" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                <Link href="/contact" className="text-sm text-text-secondary hover:text-text-primary transition-colors">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
+
           <div>
-            <h4 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">Legal</h4>
-            <ul className="mt-4 space-y-4">
+            <h4 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-4">Legal</h4>
+            <ul className="space-y-3">
               <li>
-                <a href="/privacy" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                <Link href="/privacy" className="text-sm text-text-secondary hover:text-text-primary transition-colors">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/terms" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                <Link href="/terms" className="text-sm text-text-secondary hover:text-text-primary transition-colors">
                   Terms of Service
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
-        <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-8">
-          <p className="text-center text-gray-600 dark:text-gray-300">
-            © {new Date().getFullYear()} Brimax. All rights reserved.
+
+        <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-text-muted">
+            &copy; {new Date().getFullYear()} Brimax. All rights reserved.
+          </p>
+          <p className="text-xs text-text-muted">
+            Built in Ekiti, Nigeria
           </p>
         </div>
       </div>
     </footer>
-  )
-} 
+  );
+}

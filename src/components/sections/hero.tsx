@@ -1,79 +1,56 @@
-"use client"
-
-import { motion } from "framer-motion"
-import Link from "next/link"
+import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-transparent pointer-events-none" />
+    <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-400 text-sm font-medium mb-8"
-          >
+        <div className="max-w-4xl">
+          <p className="text-sm font-medium text-accent mb-6 tracking-wide uppercase">
             Security-first builder
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
-          >
-            On-chain policy vaults.
-            <br />
-            <span className="text-blue-500">AI payment security.</span>
-            <br />
-            Solana vulnerability research.
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
-          >
-            Building security infrastructure for the AI agent economy. From immutable on-chain policy vaults to TEE-attested payment security layers — every line of code is written with the assumption that someone will try to break it.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
+          </p>
+          <h1 className="text-5xl md:text-7xl font-bold text-text-primary leading-[1.05] tracking-tight mb-8">
+            Building security infrastructure for the AI agent economy.
+          </h1>
+          <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl mb-10">
+            On-chain policy vaults, TEE-attested payment security layers, and Solana vulnerability research. Every line of code is written with the assumption that someone will try to break it.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/portfolio"
-              className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="inline-flex items-center justify-center px-6 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent-hover transition-colors duration-200"
             >
               View Projects
             </Link>
             <Link
               href="/contact"
-              className="px-8 py-3 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-medium"
+              className="inline-flex items-center justify-center px-6 py-3 border border-border text-text-primary font-medium rounded-lg hover:border-text-muted hover:bg-surface transition-colors duration-200"
             >
-              Get in Touch
+              Start a Project
             </Link>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex items-center justify-center gap-8 mt-12 text-sm text-gray-500 dark:text-gray-400"
-          >
-            <div className="flex items-center gap-2">
-              <span>Immutable binaries</span>
+          </div>
+        </div>
+
+        <div className="mt-20 pt-8 border-t border-border">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <p className="text-xs text-text-muted uppercase tracking-wider mb-2">Focus</p>
+              <p className="text-sm text-text-secondary">On-chain security</p>
             </div>
-            <div className="flex items-center gap-2">
-              <span>TEE attestation</span>
+            <div>
+              <p className="text-xs text-text-muted uppercase tracking-wider mb-2">Stack</p>
+              <p className="text-sm text-text-secondary">Rust, Solana, Python</p>
             </div>
-            <div className="flex items-center gap-2">
-              <span>Open source</span>
+            <div>
+              <p className="text-xs text-text-muted uppercase tracking-wider mb-2">Approach</p>
+              <p className="text-sm text-text-secondary">Immutable by default</p>
             </div>
-          </motion.div>
+            <div>
+              <p className="text-xs text-text-muted uppercase tracking-wider mb-2">Status</p>
+              <p className="text-sm text-text-secondary">Open to work</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

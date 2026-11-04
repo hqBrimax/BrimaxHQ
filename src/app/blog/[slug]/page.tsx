@@ -1,94 +1,70 @@
-import { notFound } from "next/navigation"
-import { blogPosts } from "@/data/blog-posts"
-import Image from "next/image"
-import { Metadata } from "next"
+import { notFound } from "next/navigation";
+import { blogPosts } from "@/data/blog-posts";
+import Link from "next/link";
+import { Metadata } from "next";
 
 interface Props {
-    params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }
 
-// Generate metadata for the specific blog post
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const { slug } = await params
-    const post = blogPosts.find((p) => p.slug === slug)
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
 
-    if (!post) {
-        return {}
-    }
+  if (!post) {
+    return {};
+  }
 
-    return {
-        title: post.title,
-        description: post.excerpt,
-        openGraph: {
-            title: post.title,
-            description: post.excerpt,
-            images: [
-                {
-                    url: post.image,
-                    width: 800,
-                    height: 400,
-                    alt: post.title,
-                },
-            ],
-            type: "article",
-            publishedTime: post.date,
-        },
-        twitter: {
-            card: "summary_large_image",
-            title: post.title,
-            description: post.excerpt,
-            images: [post.image],
-        },
-    }
+  return {
+    title: `${post.title} — Brimax`,
+    description: post.excerpt,
+  };
 }
 
-// Generate static params for all blog posts
 export async function generateStaticParams() {
-    return blogPosts.map((post) => ({
-        slug: post.slug,
-    }))
+  return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
 export default async function BlogPostPage({ params }: Props) {
-    const { slug } = await params
-    const post = blogPosts.find((p) => p.slug === slug)
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
 
-    if (!post) {
-        notFound()
-    }
+  if (!post) {
+    notFound();
+  }
 
-    return (
-        <div className="pt-32 pb-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <article className="prose dark:prose-invert max-w-none">
-                    <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                        {post.title}
-                    </h1>
-                    <div className="text-gray-600 dark:text-gray-300 mb-6">
-                        By {post.author} on {new Date(post.date).toLocaleDateString()}
-                    </div>
-                    <div className="relative w-full h-96 mb-8">
-                        <Image
-                            src={post.image}
-                            alt={post.title}
-                            fill
-                            style={{ objectFit: 'cover' }}
-                            className="rounded-lg"
-                        />
-                    </div>
-                    <div className="flex flex-wrap gap-2 mb-8">
-                        {post.tags.map((tag) => (
-                            <span
-                                key={tag}
-                                className="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full dark:bg-blue-900 dark:text-blue-200"
-                            >
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
-                    <div dangerouslySetInnerHTML={{ __html: post.content }} />
-                </article>
-            </div>
-        </div>
-    )
-} 
+  return (
+    <div className="pt-32 pb-24">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Link
+          href="/blog"
+          className="text-sm text-text-muted hover:text-text-primary transition-colors mb-8 inline-block"
+        >
+          &larr; Back to blog
+        </Link>
+        <article>
+          <h1 className="text-3xl md:text-4xl font-bold text-text-primary mb-4 leading-tight">
+            {post.title}
+          </h1>
+          <div className="text-text-muted text-sm mb-8">
+            By {post.author} on {new Date(post.date).toLocaleDateString()}
+          </div>
+          <div className="flex flex-wrap gap-2 mb-8">
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-xs font-medium text-accent bg-accent-subtle px-2.5 py-1 rounded-md"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div
+            className="prose prose-invert max-w-none"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        </article>
+      </div>
+    </div>
+  );
+}

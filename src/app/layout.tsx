@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
@@ -12,9 +13,32 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono-jetbrains",
+});
+
 export const metadata: Metadata = {
-  title: "BrimaxHQ - Modern Tech Services",
-  description: "Professional tech services focused on SaaS Development, Freelancing, and Software Solutions",
+  title: "Brimax — Security-first builder",
+  description: "On-chain policy vaults, AI payment security, and Solana vulnerability research. Building security infrastructure for the AI agent economy.",
+  metadataBase: new URL("https://visitbrimax.vercel.app"),
+  openGraph: {
+    title: "Brimax — Security-first builder",
+    description: "On-chain policy vaults, AI payment security, and Solana vulnerability research.",
+    url: "https://visitbrimax.vercel.app",
+    siteName: "Brimax",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brimax — Security-first builder",
+    description: "On-chain policy vaults, AI payment security, and Solana vulnerability research.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -24,10 +48,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} antialiased min-h-screen bg-white dark:bg-gray-900`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased min-h-screen bg-bg`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
