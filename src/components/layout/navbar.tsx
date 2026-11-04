@@ -11,9 +11,8 @@ export function Navbar() {
 
   const navigation = [
     { name: "Home", href: "/" },
+    { name: "Projects", href: "/portfolio" },
     { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ]
 
@@ -23,7 +22,7 @@ export function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex">
             <Link href="/" className="flex items-center">
-              <span className="text-xl font-bold text-gray-900 dark:text-white">BrimaxHQ</span>
+              <span className="text-xl font-bold text-gray-900 dark:text-white">Brimax</span>
             </Link>
           </div>
 

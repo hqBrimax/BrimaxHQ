@@ -4,9 +4,9 @@ export function Footer() {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">BrimaxHQ</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Brimax</h3>
             <p className="mt-4 text-gray-600 dark:text-gray-300">
-              Modern tech services focused on SaaS Development, Freelancing, and Software Solutions.
+              Security-first builder. On-chain policy vaults, AI payment security, and Solana vulnerability research.
             </p>
           </div>
           <div>
@@ -67,7 +67,7 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-8">
           <p className="text-center text-gray-600 dark:text-gray-300">
-            © {new Date().getFullYear()} BrimaxHQ. All rights reserved.
+            © {new Date().getFullYear()} Brimax. All rights reserved.
           </p>
         </div>
       </div>
